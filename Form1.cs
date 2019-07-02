@@ -28,7 +28,7 @@ namespace AessementRRG
             btn_spin.Enabled = true;
             btn_shoot.Enabled = false;
             btn_shootAway.Enabled = false;
-            btn_playAgain.Enabled = false;
+   
             //Adding a Image by clicking the load button in to the picture box
             Assembly loadpic = Assembly.GetExecutingAssembly();
             Stream myStream = loadpic.GetManifestResourceStream("AessementRRG.Resources.load.gif");
@@ -53,7 +53,7 @@ namespace AessementRRG
             btn_spin.Enabled = false;
             btn_shoot.Enabled = true;
             btn_shootAway.Enabled = true;
-            btn_playAgain.Enabled = false;
+           
             //Adding a Image by clicking the spin button in to the picture box
             Assembly spinpic = Assembly.GetExecutingAssembly();
             Stream myStream = spinpic.GetManifestResourceStream("AessementRRG.Resources.spining.gif");
@@ -115,69 +115,82 @@ namespace AessementRRG
             }
         }
         private void Btn_shootAway_Click(object sender, EventArgs e)
-        { 
-            //Adding a Image by clicking the shoot away button in to the picture box
-            Assembly shootawaypic = Assembly.GetExecutingAssembly();
-            Stream myStream = shootawaypic.GetManifestResourceStream("AessementRRG.Resources.shoot away.gif");
-            Bitmap bmp = new Bitmap(myStream);
-            pic_change_box.Image = bmp;
-            // addinng a wav audio using resource file with try and catch method 
-            try
+        {
+            if (game.bulletout >= 1)
             {
-                SoundPlayer player = new SoundPlayer(AessementRRG.Resource1.shoot_away_tone);
-                player.Play();
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error Message" + ex.Message);
-            }
-            // score is varibel used to call the shootaway function form class Game RR
-            int score = game.shootaway();
-            if (score == 10)
-            {
-                MessageBox.Show("You Won✌✌✌ " + "Your score is 10");
-                //disabling and enabling the buttons
-                btn_shootAway.Enabled = false;
-                btn_spin.Enabled = true;
-                btn_shoot.Enabled = false;
-                btn_load.Enabled = false;
-            }
-            if (score == 5)
-            {
-                MessageBox.Show("You Won By half✌" + "Your score is 5");
-                //disabling and enabling the buttons
-                btn_shootAway.Enabled = false;
-                btn_spin.Enabled = true;
-                btn_shoot.Enabled = false;
-                btn_load.Enabled = false;
-            }
-            if (score == 0)
-            {
-                MessageBox.Show("Champer Empty");
-                if (game.totshot == 0)
+                //Adding a Image by clicking the shoot away button in to the picture box
+                Assembly shootawaypic = Assembly.GetExecutingAssembly();
+                Stream myStream = shootawaypic.GetManifestResourceStream("AessementRRG.Resources.shoot away.gif");
+                Bitmap bmp = new Bitmap(myStream);
+                pic_change_box.Image = bmp;
+                // addinng a wav audio using resource file with try and catch method 
+                try
                 {
-                    MessageBox.Show("you lost😔😔");
-                    btn_shootAway.Enabled = false;
-
+                    SoundPlayer player = new SoundPlayer(AessementRRG.Resource1.shoot_away_tone);
+                    player.Play();
                 }
 
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error Message" + ex.Message);
+                }
+                // score is varibel used to call the shootaway function form class Game RR
+                int score = game.shootaway();
+               
+                if (score == 10)
+                {
+                    MessageBox.Show("You Won✌✌✌ " + "Your score is 10");
+                    //disabling and enabling the buttons
+                    btn_shootAway.Enabled = false;
+                    btn_spin.Enabled = true;
+                    btn_shoot.Enabled = false;
+                    btn_load.Enabled = false;
+                }
+                if (score == 5)
+                {
+                    MessageBox.Show("You Won By half✌" + "Your score is 5");
+                    //disabling and enabling the buttons
+                    btn_shootAway.Enabled = false;
+                    btn_spin.Enabled = true;
+                    btn_shoot.Enabled = false;
+                    btn_load.Enabled = false;
+                }
+                if (score == 0)
+                {
+                    MessageBox.Show("Champer Empty");
+                    if (game.totshot == 0)
+                    {
+                        MessageBox.Show("you lost😔😔");
+                        btn_shootAway.Enabled = false;
+
+                    }
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("you have already lost 2 life lines😔😔");
+                btn_shootAway.Enabled = false;
             }
 
         }
 
         private void Btn_playAgain_Click(object sender, EventArgs e)
         {
+            (new RRGame()).Show();
+            this.Hide();
+          
+            //this.Controls.Clear();
+            //this.InitializeComponent();
             //disabling and enabling the buttons
             btn_load.Enabled = true;
             btn_spin.Enabled = false;
             btn_shoot.Enabled = false;
             btn_shootAway.Enabled = false;
             btn_playAgain.Enabled = true;
-            this.Controls.Clear();
-            this.InitializeComponent();
-           //new (RRGame)).Show();
-            //this.Hide();
+            
+           //
+            //
         }
 
         private void Pic_change_box_Click(object sender, EventArgs e)

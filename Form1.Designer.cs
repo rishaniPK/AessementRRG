@@ -32,9 +32,9 @@
             this.btn_spin = new System.Windows.Forms.Button();
             this.btn_shoot = new System.Windows.Forms.Button();
             this.btn_shootAway = new System.Windows.Forms.Button();
+            this.pic_change_box = new System.Windows.Forms.PictureBox();
             this.lbl_headline = new System.Windows.Forms.Label();
             this.btn_playAgain = new System.Windows.Forms.Button();
-            this.pic_change_box = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pic_change_box)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,6 +86,16 @@
             this.btn_shootAway.UseVisualStyleBackColor = false;
             this.btn_shootAway.Click += new System.EventHandler(this.Btn_shootAway_Click);
             // 
+            // pic_change_box
+            // 
+            this.pic_change_box.Image = global::AessementRRG.Resource1.start_game;
+            this.pic_change_box.Location = new System.Drawing.Point(24, 80);
+            this.pic_change_box.Name = "pic_change_box";
+            this.pic_change_box.Size = new System.Drawing.Size(183, 236);
+            this.pic_change_box.TabIndex = 5;
+            this.pic_change_box.TabStop = false;
+            this.pic_change_box.Click += new System.EventHandler(this.Pic_change_box_Click);
+            // 
             // lbl_headline
             // 
             this.lbl_headline.AutoSize = true;
@@ -109,17 +119,6 @@
             this.btn_playAgain.Text = "Play Again";
             this.btn_playAgain.UseVisualStyleBackColor = false;
             this.btn_playAgain.Click += new System.EventHandler(this.Btn_playAgain_Click);
-            // 
-            // pic_change_box
-            // 
-            this.pic_change_box.BackgroundImage = global::AessementRRG.Resource1.start;
-            this.pic_change_box.Image = global::AessementRRG.Resource1.start_game;
-            this.pic_change_box.Location = new System.Drawing.Point(24, 80);
-            this.pic_change_box.Name = "pic_change_box";
-            this.pic_change_box.Size = new System.Drawing.Size(183, 236);
-            this.pic_change_box.TabIndex = 5;
-            this.pic_change_box.TabStop = false;
-            this.pic_change_box.Click += new System.EventHandler(this.Pic_change_box_Click);
             // 
             // RRGame
             // 
